@@ -195,7 +195,14 @@ void CMyFriendView::OnBnClickedAdd()
 void CMyFriendView::OnBnClickedLoad()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CFile file(_T("c:\\temp\\myFriend.dat"),
+	CFileDialog a(TRUE); // 저장모드
+	int nResult = a.DoModal();
+	if (nResult != IDOK)
+	{
+		return;
+	}
+
+	CFile file(a.GetPathName(),
 		CFile::modeReadWrite);
 
 	CArchive ar(&file, CArchive::load);
@@ -228,7 +235,14 @@ void CMyFriendView::OnBnClickedLoad()
 void CMyFriendView::OnBnClickedSave()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CFile file(_T("c:\\temp\\myFriend.dat"),
+	CFileDialog a(FALSE); // 저장모드
+	int nResult = a.DoModal();
+	if (nResult != IDOK)
+	{
+		return;
+	}
+
+	CFile file(a.GetPathName(),
 		CFile::modeCreate | CFile::modeReadWrite);
 
 	CArchive ar(&file, CArchive::store);
