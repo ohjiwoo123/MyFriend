@@ -31,6 +31,7 @@ CPerson::~CPerson()
 void CPerson::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
+}
 ```
 CPerson 사용하려면  
 내가 사용할 헤더에서 (현재의 경우 MyFriendView.h)  
