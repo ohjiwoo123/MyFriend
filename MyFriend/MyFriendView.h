@@ -3,7 +3,8 @@
 //
 
 #pragma once
-#include "CPerson.h"
+//#include "CPerson.h"
+#include <vector>
 
 class CMyFriendView : public CFormView
 {
@@ -24,11 +25,11 @@ public:
 
 public:
 	int m_nCount;
-	CPerson m_pPerson[5];
 
 // 재정의입니다.
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	//virtual void Serialize(CArchive& ar);
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 	virtual void OnInitialUpdate(); // 생성 후 처음 호출되었습니다.
@@ -51,16 +52,18 @@ protected:
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
+	CString m_strName;
 	int m_nAge;
 	int m_nGender;
-	CString m_strName;
+
+
 	CSpinButtonCtrl m_Ctrl_Spin;
 	CListCtrl m_Control_Friend;
 	afx_msg void OnBnClickedAdd();
 	afx_msg void OnBnClickedLoad();
 	afx_msg void OnBnClickedSave();
-
 	afx_msg void OnBnClickedRemove();
+
 };
 
 #ifndef _DEBUG  // MyFriendView.cpp의 디버그 버전
