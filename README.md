@@ -42,5 +42,30 @@ CPerson 사용하려면
 ```
 해줘야 한다.  
 ## Serialize 함수 
-???
-## 기타 등등
+CArchive class를 사용하며 기본적인 구조는 아래와 같다.
+```
+void CPerson::Serialize(CArchive& ar)
+{
+	if (ar.IsStoring())
+	{	// storing code
+		ar << m_nAge;
+		ar << m_nGender;
+		ar << m_strName;
+	}
+	else
+	{	// loading code
+		ar >> m_nAge;
+		ar >> m_nGender;
+		ar >> m_strName;
+	}
+}
+```
+## 2022-02-09 vector로 데이터 변환 완료 (저장,불러오기 완료)
+**유의사항**  
+```
+vector<Friend> myFriendList;
+ar << (int)myFriendList.size();
+```
+여기서 `myFriendList.size();`의 데이터 타입이 size_t로 크기가 8바이트이다. (int는 4바이트)  
+그래서 처음에 count 값을 넣고 load해서 카운트 값을 읽으면 처음의 count 숫자 값은 제대로 읽어오나,  
+그 뒤에 값들이 load가 올바르게 되지 않는다.
