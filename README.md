@@ -42,7 +42,7 @@ CPerson 사용하려면
 ```
 해줘야 한다.  
 ## Serialize 함수 
-CArchive class를 사용하며 기본적인 구조는 아래와 같다.
+CArchive Class를 사용하며 기본적인 구조는 아래와 같다.
 ```
 void CPerson::Serialize(CArchive& ar)
 {
